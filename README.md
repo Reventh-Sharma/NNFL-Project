@@ -27,12 +27,14 @@ python train.py
 
 3. If you want to verify our results from the paper, you can directly load our pre-trained model's weights and test it using using:
 ```
-python test.py
+python test.py N
 ```
+
+Here, `N` represents the number of test images to sample from. By default, `N = 10`.
 
 Otherwise, you can freshly train the model before testing, using:
 ```
-python test.py --train
+python test.py N --train
 ```
 
 ## Group Members
