@@ -13,7 +13,7 @@ def generate_images(directory, batch_size, labels, shuffle, target_size, rescale
     assert validation_split <= 0.5
     
     data_path = pathlib.Path(directory)
-    images = list(data_path.glob("*." + fmt))
+    images = sorted(list(data_path.glob("*." + fmt)))
     num_images = len(images)
     
     # A Label for each image
