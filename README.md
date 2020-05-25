@@ -10,3 +10,4 @@ Instructions for running the code:
   Link to the problem statement:
   https://bitsnnfl.github.io/cnn/optimization/backpropagation/object%20recognition/id-52-convolutional-neural-network-with-an-optimized-backpropagation-technique/
   
+  Paper Link: https://ieeexplore.ieee.org/document/8878719
