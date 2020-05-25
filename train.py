@@ -45,7 +45,7 @@ if __name__ == '__main__':
     images = pathlib.Path(data_dir).glob("*.png")
     image_data = list(images)
 
-    CLASS_LABELS = list([int(''.join(item.name.split('_')[0].lstrip('obj'))) for item in image_data])
+    CLASS_LABELS = sorted(list([int(''.join(item.name.split('_')[0].lstrip('obj'))) for item in image_data]))
     CLASS_LABELS = np.array((CLASS_LABELS))
     CLASS_LABELS = one_hot_encoder(CLASS_LABELS)
     
