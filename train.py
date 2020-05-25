@@ -16,6 +16,10 @@ from tensorflow.python.framework.ops import disable_eager_execution
 # Disable eager execution
 disable_eager_execution()
 
+# Disable bullshit logging
+import logging
+logging.getLogger("tensorflow").setLevel(logging.ERROR)
+
 from preprocess import generate_images, one_hot_encoder
 from models import generate_model
 

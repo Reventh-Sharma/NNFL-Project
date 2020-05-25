@@ -3,6 +3,10 @@ import tensorflow as tf
 from tensorflow.keras import datasets, layers, models
 from tensorflow.keras.layers import Dense, Activation, Conv2D, AveragePooling2D, Flatten, Dropout, Reshape
 
+# Disable bullshit logging
+import logging
+logging.getLogger("tensorflow").setLevel(logging.ERROR)
+
 def simple_model(optimizer, NUM_LABELS):
     model = models.Sequential()
     model.add(layers.Conv2D(8, (1, 1), activation='relu', input_shape=(128, 128, 3)))
