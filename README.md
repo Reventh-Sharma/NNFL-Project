@@ -14,7 +14,8 @@ Paper Link: https://ieeexplore.ieee.org/document/8878719
 
 ## Instructions (Running the Python files directly)
 
-*****************************************************************************************************************************************NOTE: The project file small_cnn_model.ipynb trains a smaller CNN model for full batch (or fractional batch with minimum batch size to* *be 1/5th of training data size) calculations as was specified by iterations in paper52. This model, which was maximum that could be   * *build on Google Colab for full batch calculations, used 11.7GBs of RAM when running for these high batch sizes provided in paper. For * *higher accuracy model (similiar to that in paper) trained on batch size = 20 please refer CNN_projet.ipynb on which the presentation  * *and .py files are based.                                                                                                              *
+
+*****************************************************************************************************************************************NOTE: The project file small_cnn_model.ipynb trains a smaller CNN model for full batch (or fractional batch with minimum batch size to be 1/5th of training data size) calculations as was specified by iterations in paper52. This model, which was maximum that could be build on Google Colab for full batch calculations, used 11.7GBs of RAM when running for these high batch sizes provided in paper. For higher accuracy model (similiar to that in paper) trained on batch size = 20 please refer CNN_projet.ipynb on which the presentation and .py files are based.
 ****************************************************************************************************************************************
 
 Instructions for running the code directly:
