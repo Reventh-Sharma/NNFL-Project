@@ -1,0 +1,4 @@
+# Project .gitignore files
+__pycache__
+dataset
+
