@@ -10,6 +10,15 @@ from preprocess import generate_images, one_hot_encoder
 from models import generate_model, load_model
 from train import train_model
 
+from tensorflow.python.framework.ops import disable_eager_execution
+
+# Disable eager execution
+disable_eager_execution()
+
+# Disable bullshit logging
+import logging
+logging.getLogger("tensorflow").setLevel(logging.ERROR)
+
 def test_model(model, data_path, num_samples):
     gen = generate_images(directory=str(data_path), batch_size=num_samples,
                             labels=CLASS_LABELS,
@@ -31,9 +40,16 @@ def test_model(model, data_path, num_samples):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Test the Adagrad and RMSprop models')
-    parser.add_argument('--train', action='store_true')
+    parser.add_argument('--train', action='store_true', help='Flag for training the models just before testing')
+    parser.add_argument('test_samples', metavar='N', type=int, default=10,
+                    help='The number of test samples')
 
     args = parser.parse_args()
+
+    if args.test_samples <= 0:
+        raise ValueError('Number of test samples must be a positive integer')
+    
+    num_test_samples = args.test_samples
 
     data_dir = os.path.join(os.getcwd(), 'dataset', 'coil-100')
     data_path = pathlib.Path(data_dir)
@@ -92,14 +108,14 @@ if __name__ == '__main__':
         rmsprop_model = load_model('RMSprop')
 
     # Evaluate the models
-    predictions, test_images, test_labels = test_model(adadelta_model, data_path, num_samples=10)
+    predictions, test_images, test_labels = test_model(adadelta_model, data_path, num_samples=num_test_samples)
 
     # Example Images for testing the Model
     for prediction, test_label in zip(predictions, test_labels):
         print(f"Adedelta => Predicted Label: {prediction}")
         print(f"Adadelta => Actual Label: {np.argmax(test_label)}")
 
-    predictions, test_images, test_labels = test_model(rmsprop_model, data_path, num_samples=10)
+    predictions, test_images, test_labels = test_model(rmsprop_model, data_path, num_samples=num_test_samples)
 
     # Example Images for testing the Model
     for prediction, test_label in zip(predictions, test_labels):

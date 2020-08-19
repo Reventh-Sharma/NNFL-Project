@@ -16,6 +16,10 @@ from tensorflow.python.framework.ops import disable_eager_execution
 # Disable eager execution
 disable_eager_execution()
 
+# Disable bullshit logging
+import logging
+logging.getLogger("tensorflow").setLevel(logging.ERROR)
+
 from preprocess import generate_images, one_hot_encoder
 from models import generate_model
 
@@ -41,7 +45,7 @@ if __name__ == '__main__':
     images = pathlib.Path(data_dir).glob("*.png")
     image_data = list(images)
 
-    CLASS_LABELS = list([int(''.join(item.name.split('_')[0].lstrip('obj'))) for item in image_data])
+    CLASS_LABELS = sorted(list([int(''.join(item.name.split('_')[0].lstrip('obj'))) for item in image_data]))
     CLASS_LABELS = np.array((CLASS_LABELS))
     CLASS_LABELS = one_hot_encoder(CLASS_LABELS)
     
